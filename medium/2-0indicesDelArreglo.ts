@@ -10,7 +10,7 @@ const rellenarArreglo = require('./0-arreglos'); // Importa la función para rel
 
 async function main(): Promise<number> {   
     const arreglo1: number[] = [];
-    await rellenarArreglo(arreglo1, 'A');
+    await rellenarArreglo.rellenarArreglo(arreglo1, 'A');
     arreglo1.forEach((valor, indice) => {
         console.log(`Indice ${indice}: ${valor}`);
     });

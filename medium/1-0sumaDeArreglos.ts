@@ -8,7 +8,7 @@ const rellenarArreglo = require('./0-arreglos');
 async function main(): Promise<number> {
     
     const arreglo1: number[] = [];
-    await rellenarArreglo(arreglo1, 'A');
+    await rellenarArreglo.rellenarArreglo(arreglo1, 'A');
     let resultadoSuma: number = arreglo1.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
     console.log(resultadoSuma);
     return 0;

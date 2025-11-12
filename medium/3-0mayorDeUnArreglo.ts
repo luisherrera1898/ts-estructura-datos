@@ -9,7 +9,7 @@ const rellenarArreglo = require('./0-arreglos'); // Importa la función para rel
 
 async function main(): Promise<number>{
     const arreglo: number[] = [];
-    await rellenarArreglo(arreglo, 'números');
+    await rellenarArreglo.rellenarArreglo(arreglo, 'números');
 
     if (arreglo.length === 0) {
         console.log('El arreglo está vacío.');

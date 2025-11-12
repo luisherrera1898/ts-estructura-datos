@@ -10,7 +10,7 @@ const rellenarArreglo = require('./0-arreglos'); // Importa la función para rel
 
 async function main() {
     const vector: number[] = [];
-    await rellenarArreglo(vector, 'vector');
+    await rellenarArreglo.rellenarArreglo(vector, 'vector');
     const vectorInverso: number[] = [];
 
     for (let i = vector.length - 1; i >= 0; i--) {

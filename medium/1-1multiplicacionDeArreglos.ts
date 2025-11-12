@@ -8,7 +8,7 @@ const rellenarArreglo = require('./0-arreglos'); // Importa la función para rel
 
 async function main(): Promise<number> {   
     const arreglo1: number[] = [];
-    await rellenarArreglo(arreglo1, 'A');
+    await rellenarArreglo.rellenarArreglo(arreglo1, 'A');
     console.log(arreglo1);
     let resultadoMultiplicacion: number = arreglo1.reduce((acumulador, valorActual) => acumulador * valorActual, 1);
     console.log(resultadoMultiplicacion);
