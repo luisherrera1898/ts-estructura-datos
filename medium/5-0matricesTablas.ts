@@ -28,27 +28,3 @@
     ```
     En este ejemplo, hemos declarado una matriz bidimensional llamada `matriz` que contiene tres filas y tres columnas. Cada elemento de la matriz se puede acceder utilizando dos índices: el primer índice representa la fila y el segundo índice representa la columna.
 */
-const askQuestion: (q: string) => Promise<string> = require('../utils/InteractuableConsole');
-
-async function determinarMatrizNumeros(rows: number, cols: number): Promise<number[][]> {
-    const matriz: number[][] = Array.from({ length: rows }, () => new Array<number>(cols).fill(0));
-
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            while (true) {
-                const raw = (await askQuestion(`Ingrese el número para la posición [${i}][${j}]: `)).trim();
-                const value = Number(raw);
-                if (Number.isFinite(value)) {
-                    matriz[i]![j] = value;
-                    break;
-                } else {
-                    console.log('Entrada inválida. Por favor, ingrese un número válido.');
-                }
-            }
-        }
-    }
-
-    return matriz;
-}
-
-module.exports = { determinarMatrizNumeros };

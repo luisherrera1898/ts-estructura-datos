@@ -11,25 +11,30 @@
 
     3 imprimir la matriz en consola.
 */
-const askQuestion: (q: string) => Promise<string> = require('../utils/InteractuableConsole');
+const askQuestion = require('../utils/InteractuableConsole');
+//import askQuestion from ''..
+const llenarValor = require('../utils/llenarValor'); //retorna una promise en string de lo que se digite en value
 const run = require('../utils/runAsync');
-const determinarMatriz = require('./5-0matricesTablas.ts');
+const IsIntNumber = require('../utils/IsIntNumber'); //nos ayuda a comprobar que el usuario digito un numero entero
+const definirMatriz = require('../utils/definirMatriz'); // nos ayuda a definir una matriz de x filas y columnas, el tercer parametro es con que elementos default se llenara la matriz
+const rellenarMatriz = require('../utils/rellenarMatrz');
+//falta llenar la matriz con numeros o caracteres personalizados recorriendo la matriz :)
 
 async function main(): Promise<number>{
-    const rawRows =  parseInt(await askQuestion('Ingrese el número de filas de la matriz: '));
-    const rawCols =  parseInt(await askQuestion('Ingrese el número de columnas de la matriz: '));
-    if (isNaN(rawRows) || isNaN(rawCols) || rawRows <= 0 || rawCols <= 0) {
-        console.log('Por favor, ingrese números válidos para filas y columnas.');
+    
+    const x: number = parseFloat(await llenarValor());  const xVerified:boolean = IsIntNumber(x);
+    const y: number = parseFloat(await llenarValor());  const yVerified:boolean = IsIntNumber(y);
+    
+    if (xVerified !== true || yVerified !== true) {
+        console.error('Digite numeros enteros.');
         return 1;
-    }else{
-        const matriz: number[][] = await determinarMatriz.determinarMatrizNumeros(rawRows, rawCols);
-        console.log('Matriz completa:');
-        console.table(matriz);
     }
 
+    const matriz = definirMatriz(x, y, 0);
+    const matrizFilled = await rellenarMatriz(matriz)
+    console.table(matrizFilled);
+    
     return 0;
 }
 
 run(main);
-
- 

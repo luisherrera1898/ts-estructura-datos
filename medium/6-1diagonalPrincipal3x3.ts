@@ -4,34 +4,22 @@
     Por ejemplo, en una matriz 3x3, los elementos de la diagonal principal son aquellos en las posiciones [0][0], [1][1] y [2][2].
     El programa debe mostrar los elementos de la diagonal principal en la consola.
 */
+const definirMatriz = require('../utils/definirMatriz'); //expects xrows ycolums filledWithVariable
+const rellenarMatriz = require('../utils/rellenarMatrz');
 const run = require('../utils/runAsync');
-const askQuestion: (q: string) => Promise<string> = require('../utils/InteractuableConsole');
 
-async function main(): Promise<number> {
-    const matriz: number[][] = [];
 
-    for (let i = 0; i < 3; i++) {
-        // aseguramos la fila
-        matriz[i] = [];
-        for (let j = 0; j < 3; j++) {
-            // pedimos hasta recibir un número válido
-            while (true) {
-                const raw = (await askQuestion(`Ingrese el número para la posición [${i}][${j}]: `)).trim();
-                const value = parseFloat(raw);
-                if (Number.isFinite(value)) {
-                    matriz[i]![j] = value;
-                    break; // salió bien, pasamos a la siguiente celda
-                }
-                console.log('Entrada inválida. Por favor ingrese un número válido.');
-            }
+async function main() {
+    const matriz3X3 = definirMatriz(3, 3, null); //defined but filled with null data
+    const filledMatriz3x3 = await rellenarMatriz(matriz3X3); //llenamos la matriz con valores ingresados por el user, pueden ser string o numeros
+
+    const principal = () =>{
+        for (let i = 0; i < filledMatriz3x3.length; i++) {
+            console.log(filledMatriz3x3[i][i]);
         }
     }
 
-    console.log('La diagonal principal de la matriz es:');
-    for (let i = 0; i < 3; i++) {
-        console.log(matriz[i]![i]);
-    }
-    return 0;
+    principal();
 }
 
 run(main);
