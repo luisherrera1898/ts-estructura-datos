@@ -1,18 +1,18 @@
-const askQuestion = require('./InteractuableConsole');
+const askQuestion = require('../utils/InteractuableConsole');
 
-async function rellenarMatriz<T>(
-  matriz: T[][]
-): Promise<T[][]> {
+async function rellenarMatriz<T>(matriz: T[][]): Promise<T[][]> {
   for (let i = 0; i < matriz.length; i++) {
-    const row = matriz[i];
-    if (!row) continue;
-    for (let j = 0; j < row.length; j++) {
-      let respuesta = await askQuestion(`Digite un valor para la posición ${j+1} de la fila ${i+1}: `);
+    if (!matriz[i]) continue;
 
-      if (typeof row[j] === "number") {
-        row[j] = Number(respuesta) as T;
+    for (let j = 0; j < matriz[i]!.length; j++) {
+      const respuesta = await askQuestion(
+        `Digite un valor para la posición ${j + 1} de la fila ${i + 1}: `
+      );
+
+      if (!isNaN(Number(respuesta) )) {
+        matriz[i]![j] = Number(respuesta) as T;
       } else {
-        row[j] = respuesta as T;
+        matriz[i]![j] = respuesta as T;
       }
     }
   }

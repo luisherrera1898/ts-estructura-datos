@@ -5,33 +5,21 @@
     3. retornar esa matriz
 */
 
+import console = require("console");
+
 const run = require('../utils/runAsync');
 const definirMatriz = require('../utils/definirMatriz');
 const rellenarMatriz: (matriz: string[][]) => Promise<number[][]> = require('../utils/rellenarMatrz');
 
 async function main() {
-    const matrizA = definirMatriz(3, 3, 0) as number[][];
-    const matrizB = definirMatriz(3, 3, 0) as number[][];
- 
-    const matrizARellenada = await rellenarMatriz(matrizA as unknown as string[][]);
-    const matrizBRellenada = await rellenarMatriz(matrizB as unknown as string[][]);
+    const matrizA: string[][] = definirMatriz(3, 3, '0');
+    const matrizB: string[][] = definirMatriz(3, 3, '0');
 
-    const matrizSuma = definirMatriz(3, 3, 0) as number[][];
+    const matrizARellenada = await rellenarMatriz(matrizA);
+    const maitrizBRellenada = await rellenarMatriz(matrizB);
 
-    for (let i = 0; i < matrizARellenada.length; i++) {
-        const rowA = matrizARellenada[i];
-        const rowB = matrizBRellenada[i];
-        const rowSum = matrizSuma[i];
-        
-        if (rowA && rowB && rowSum) {
-            for (let j = 0; j < rowA.length; j++) {
-                rowSum[j] = rowA[j] + rowB[j];
-            }
-        }
-    }
-    console.table(matrizARellenada);
-    console.table(matrizBRellenada);
-    console.table(matrizSuma);
+    const matrizSuma: number[][] = definirMatriz(3, 3, 0);
+    
 }
 
 run(main);
