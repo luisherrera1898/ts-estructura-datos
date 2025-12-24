@@ -20,6 +20,17 @@ async function main() {
 
     const matrizSuma: number[][] = definirMatriz(3, 3, 0);
     
+    if(matrizARellenada && maitrizBRellenada){
+        for (let i = 0; i < matrizSuma.length; i++) {
+            for (let j = 0; j < matrizSuma[i]!.length; j++) {
+                matrizSuma[i]![j] = (matrizARellenada[i]![j]! + maitrizBRellenada[i]![j]!);
+            }
+        }
+    }
+    console.table(matrizARellenada);
+    console.table(maitrizBRellenada);
+    console.table(matrizSuma);
+
 }
 
 run(main);
